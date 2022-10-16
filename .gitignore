@@ -15,6 +15,7 @@ dist/
 # Ignore IDE specific files
 .metadata
 .idea
+.git
 /.idea
 .pytest_cache
 /.pytest_cache
