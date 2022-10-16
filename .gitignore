@@ -1,0 +1,22 @@
+# Ignore Logs
+logs/*.log
+*.log
+
+# Ignore pyc
+*.pyc
+
+# Ignore the build directory
+/dist
+dist/
+
+# The file contatest_loggerining environment variables
+.env
+
+# Ignore IDE specific files
+.metadata
+.idea
+/.idea
+.pytest_cache
+/.pytest_cache
+/__pycache__
+__pycache__

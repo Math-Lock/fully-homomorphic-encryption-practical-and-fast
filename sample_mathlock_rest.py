@@ -45,6 +45,8 @@ class SampleMathLockApp:
         self.math = r"/math"
         self.headers = {"Content-Type": "application/json", "host": "www.math-lock.com"}
 
+    # region public methods
+
     def run_test(self, num1: str, num2: str) -> None:
         """ The method launches all available operations to test functionality """
         print(f"Num 1 to operate with is: {num1}, Num2: {num2}")
@@ -148,6 +150,10 @@ class SampleMathLockApp:
 
         return result
 
+    # endregion
+
+    # region private protected methods
+
     def __post_encryption(self, data: json) -> requests.models.Response:
         """ builds path and executes post request itself to encrypt data """
         url = f'{self.base_url}:{self.port}{self.api_suffix}{self.encrypt}'
@@ -163,13 +169,17 @@ class SampleMathLockApp:
         url = f'{self.base_url}:{self.port}{self.api_suffix}{self.math}'
         return requests.post(url, json=data, verify=True, headers=self.headers)
 
+    # endregion
+
 
 if __name__ == '__main__':
 
     # choose any (literally) 2 numbers which you want to operate with.
     # they shall be declared as a string type
-    num1_ = "15.5"
-    num2_ = "-89.56544"
+    # also, feel free to customize the code to be able to play around with our demo sample
+    num1_ = "12.6785"
+    num2_ = "3.8"
     my_rest = SampleMathLockApp()
+
     my_rest.run_test(num1_, num2_)
     my_rest.run_rest_perf_test(num1_, num2_)
