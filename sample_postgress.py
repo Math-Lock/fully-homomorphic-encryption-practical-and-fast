@@ -63,12 +63,10 @@ class MathLockPostgresSample:
             print(i)
         return column_names
 
-    def print_entire_table(self, table_name):
-        """ D """
+    def print_entire_table(self, table_name) -> None:
+        """ The method prints whole SQL table by given name """
         my_table = pd.read_sql(f"SELECT * FROM {table_name}", self.conn)
-        # another_attempt = psql.read_sql(f"SELECT * FROM {table_name}", self.conn)
         print(my_table)
-        # print(another_attempt)
 
     def get_all_tables_info(self) -> list:
         """ The method gives all public tables available in the db """
