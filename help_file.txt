@@ -1,0 +1,4 @@
+# required python version not less than 3.6
+# To be able to launch sample out of the box, need to be done simple command to install requirements
+# option 1: <pip3 install -r sample_requirements.txt>
+# option 2: <python3.6 -m pip install -r sample_requirements.txt>
