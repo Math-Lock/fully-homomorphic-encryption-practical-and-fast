@@ -109,7 +109,10 @@ class MathLockPostgresSample:
     def create_mathlock_table(self, table_name: str) -> bool:
         """ The method creates a table by given name """
         if not table_name:
-            print(f"Table name is empty, terminating")
+            print("Table name is None, PLEASE DEFINE YOUR UNIQUE TABLE NAME... terminating")
+            sys.exit(1)
+
+        if not self.is_lower_case(table_name):
             sys.exit(1)
 
         if not self.is_table_exists(table_name):
@@ -136,7 +139,10 @@ class MathLockPostgresSample:
     def drop_mathlock_table(self, table_name: str) -> bool:
         """ The method drops existing table by given name """
         if not table_name:
-            print(f"\nTable name is empty, terminating")
+            print("Table name is None, PLEASE DEFINE YOUR UNIQUE TABLE NAME... terminating")
+            sys.exit(1)
+
+        if not self.is_lower_case(table_name):
             sys.exit(1)
 
         self.cursor.execute(f"DROP TABLE IF EXISTS {table_name}")
@@ -221,13 +227,25 @@ class MathLockPostgresSample:
 
     # endregion
 
+    # region private protected methods
+
+    def is_lower_case(self, the_name: str) -> bool:
+        """ The method validates whether it's lower case or not """
+        if not the_name.islower():
+            print("Please follow only 'snake_case' naming convention for columns and attributes.")
+            return False
+
+        return True
+
+    # endregion
+
 
 def run():
     """ Runs entire execution """
 
     set_values1 = ['10.5', '2.3', '347873.1289', '1']
     set_values2 = ['5.34', '-99.9', '344.9', '1']
-    tab_name = "test_table"  # please make sure to define unique name of your table
+    tab_name = ""  # please make sure to define unique name of your table using snake_case naming convention
     indexes = range(1, len(set_values1) + 1)
     postgres_sample = MathLockPostgresSample(pandas_cell_len=30)  # define by param 'pandas_row_len' pandas cell length
     postgres_sample.create_extension()
@@ -235,6 +253,7 @@ def run():
     # delete table in case it was created before, or was some mistake there. Comment it out if not needed
     postgres_sample.drop_mathlock_table(tab_name)
     postgres_sample.create_mathlock_table(tab_name)
+    postgres_sample.print_entire_table(tab_name)
 
     # By default, we create only records with indexes for the above set of values, every time deleting the table.
     # If you want to avoid deletion or extend it anyhow - feel free.
