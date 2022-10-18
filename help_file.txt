@@ -1,6 +1,7 @@
 # required python version not less than 3.6
+# there are 2 sample applications there, 1 for REST API and 1 for Postgres
 # 1) To be able to launch sample out of the box, need to be done simple command to install requirements
 # option 1: <pip3 install -r sample_requirements.txt>
 # option 2: <python3.6 -m pip install -r sample_requirements.txt>
-# 2) and the last - in the code it's mandatory to define table name and make it uniqueб using snake_case naming convention
-# for instane - 'my_unique_db_name'
+# 2) and the last - in the sample for Postgres it's mandatory to define table name and make it unique, using snake_case
+# naming convention. For instane - 'my_unique_db_name'
